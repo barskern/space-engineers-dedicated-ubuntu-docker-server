@@ -31,8 +31,9 @@ RUN dpkg --add-architecture i386 && \
     apt-get --no-install-recommends --no-install-suggests -y install \
         winehq-devel wine-devel wine-devel-i386 wine-devel-amd64 \
         && \
-    rm -rf /root/.wine && \
-    env WINEDLLOVERRIDES="mscoree,mshtml=" wineboot --init && \
+    rm -rf /root/.wine
+
+RUN env WINEDLLOVERRIDES="mscoree,mshtml=" wineboot --init && \
     xvfb-run winetricks --unattended vcrun2013 vcrun2017 && \
     wineboot --init && \
     winetricks --unattended dotnet472 corefonts dxvk && \
