@@ -8,8 +8,8 @@ services:
       - "27016:27016/udp" # This is for the server to be actually accessed
       #- "8080:8080/tcp" # This is for the remote Server Api to be accessed
     volumes:
-      - /opt/SpaceEngineersDedicatedServer:/root/.wine/drive_c/SpaceEngineersDedicatedServer/ # Where the actual installation of the server will be stored
-      - /opt/SpaceEngineersDedicated:/root/.wine/drive_c/users/root/AppData/Roaming/SpaceEngineersDedicated/ # Where your server data should be copied to manually
+      - ./server:/root/.wine/drive_c/SpaceEngineersDedicatedServer/ # Where the actual installation of the server will be stored
+      - ./data:/root/.wine/drive_c/users/root/AppData/Roaming/SpaceEngineersDedicated/ # Where your server data should be copied to manually
     environment:
       - SERVER_NAME=DockerDedicated
       - WORLD_NAME=DockerWorld
